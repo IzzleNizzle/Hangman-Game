@@ -63,20 +63,27 @@ document.onkeyup = function() {
             }
         }
 
+        // Win sequence
+        if (emptyVar.join("") === guessingWord.join("")) {
+            wins++
+            roundReset();
+        }
+
+
         if (keyMatch === false) {
             guessesRemaining--;
         }
         // // Logic for if the user choice matches the randomly chosen letter
         // if (a === compChoice) {
-        //     wins++
-        //     roundReset();
+            // wins++
+            // roundReset();
         // } else {
         //     guessesRemaining--;
         // }
         // // Catch for if they run out of guesses.
         if (guessesRemaining === 0) {
             lossCount++;
-            emptyVar = [];
+            
             roundReset();
             
         }
@@ -93,7 +100,9 @@ document.onkeyup = function() {
   function roundReset() {
     //Resets all arrays storing user data and prints out current scores at 0
     guessed = [];
+    emptyVar = [];
     keyClickedHistory = [];
+    guessingWord = [];
     compChoice = skateboardTricks[Math.floor((Math.random() * skateboardTricks.length))];
     console.log(compChoice);
     console.log(skateboardTricks);
